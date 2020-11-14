@@ -6,7 +6,7 @@ router.get('/', (req, res) =>{
    let query = `select * from declarations`;
    connection.query(query)
        .then(result => {
-            res.send(JSON.stringify(result[0]));
+            res.json({data : result[0]});
 
        })
        .catch(err => res.send(err));
