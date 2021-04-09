@@ -6,5 +6,5 @@ let connection = mysql.createPool({
     database:config.dataBaseName,
     password:config.password,
     multipleStatements: true
-}).promise();
+});
 module.exports = connection;
