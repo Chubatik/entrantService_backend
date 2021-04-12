@@ -15,7 +15,6 @@ router.get('/', (req, res) =>{
                 left join entrants on documents.entrant_id = entrants.entrant_id
                 left join declarations on documents.declaration_id = declarations.declaration_id 
                 ${filter}) as count`;
-    console.log(query);
     connection.promise().query(query)
         .then(result => {
             let data = {
@@ -31,10 +30,10 @@ function getFilterString(option, optionValue) {
     switch (option) {
         case 'name' : return ` entrants.entrant_name like '%${optionValue}%' `;
         case 'surname': return ` entrants.entrant_surname like '%${optionValue}%' `;
-        case 'patronym': return ` entrants.entrant_patronym like '%${optionValue}%' `;
+        case 'year': return ` year(declarations.declaration_date) = ${optionValue} `;
         case 'privilegeId': return `${optionValue === 0 ? 
             ' declarations.is_privilege = false ': 
-            `declarations.privilege_id = ${optionValue} and declarations.is_privilege = true`}`;
+            ` declarations.privilege_id = ${optionValue} and declarations.is_privilege = true`} `;
         case 'specialtyId': return ` declarations.specialty_id = ${optionValue} `;
         case 'isHostel': return ` declarations.is_hostel = ${optionValue} `;
     }
