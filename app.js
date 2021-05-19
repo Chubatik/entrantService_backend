@@ -11,6 +11,7 @@ var viewListRouter = require('./routes/view-list');
 var addFormRouter = require('./routes/add-form');
 var addEntrantRouter = require('./routes/add-entrant');
 var getEntrantRouter = require('./routes/get-entrant');
+var statisticRouter = require('./routes/statistic');
 var app = express();
 
 // view engine setup
@@ -30,6 +31,7 @@ app.use('/api/view-list', viewListRouter);
 app.use('/api/add-form', addFormRouter);
 app.use('/api/add-entrant', addEntrantRouter);
 app.use('/api/get-entrant', getEntrantRouter);
+app.use('/api/statistic', statisticRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
