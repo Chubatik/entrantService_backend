@@ -4,9 +4,9 @@ const connection = require('../database/connection');
 const filters = require("../filter/filterMethods");
 
 router.get('/', (req, res) =>{
-    let queryString = `select entrants.entrant_name, entrants.entrant_surname,
+    let queryString = `select
                     year(declarations.declaration_date) as year, privileges_for_entrant.privilege_name,
-                    declarations.is_privilege, specialties.specialty_name
+                     specialties.specialty_name
                 from documents 
                 left join entrants on documents.entrant_id = entrants.entrant_id
                 left join declarations on documents.declaration_id = declarations.declaration_id
