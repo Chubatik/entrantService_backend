@@ -13,9 +13,9 @@ router.get('/', (req, res) =>{
                 specialties: result[0][1],
                 years: result[0][2]
             }
-            res.json({data});
+            res.status(200).json({data});
         })
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
 })
 
 module.exports = router;

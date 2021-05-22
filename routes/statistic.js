@@ -14,9 +14,9 @@ router.get('/', (req, res) =>{
                 left join specialties on declarations.specialty_id = specialties.specialty_id`;
     connection.promise().query(queryString)
         .then(result => {
-            res.json({data : result[0]});
+            res.status(200).json({data : result[0]});
         })
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
 })
 
 module.exports = router;

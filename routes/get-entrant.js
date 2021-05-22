@@ -16,9 +16,9 @@ router.get('/', (req, res) =>{
                 where entrants.entrant_id = ${req.query.entrantId}`;
     connection.promise().query(query)
         .then(result => {
-            res.json({data : result[0]});
+            res.status(200).json({data : result[0]});
         })
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
 })
 
 module.exports = router;
